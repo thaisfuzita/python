@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from .. import potions
 from elements import create_fire
 from ..elements import create_air

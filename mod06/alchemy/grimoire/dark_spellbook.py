@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from .dark_validator import validate_ingredients
 
 

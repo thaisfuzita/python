@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from elements import create_fire, create_water
 from .elements import create_air, create_earth
 
