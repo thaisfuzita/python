@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 class PlantError(Exception):
     def __init__(self, message="Unknown plant error"):
         super().__init__(message)
