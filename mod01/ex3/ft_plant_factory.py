@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 class Plant:
-    def __init__(self, name: str, height: int, age: int, growth: float) -> None:
+    def __init__(self, name: str, height: int | float,
+                 age: int, growth: float) -> None:
         self.name = name
         self.height = height
         self.age = age
@@ -9,9 +10,13 @@ class Plant:
 
     def grow(self) -> None:
         self.height += self.growth
-    
+
     def show(self) -> None:
-        print(f"{self.name}: {self.height}cm, {self.age} days old")
+        print(
+            f"{self.name}: {self.height}cm, "
+            f"{self.age} days old"
+            )
+
 
 def ft_plant_factory() -> None:
     plant1 = Plant("Rose", 25.0, 30, 0.8)
@@ -24,6 +29,7 @@ def ft_plant_factory() -> None:
     for plant in garden:
         print("Created: ", end="")
         plant.show()
+
 
 if __name__ == "__main__":
     ft_plant_factory()

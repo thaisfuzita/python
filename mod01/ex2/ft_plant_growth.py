@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 class Plant:
-    def __init__(self, name: str, height: float, age_days: int, growth: float) -> None:
+    def __init__(self, name: str, height: float,
+                 age_days: int, growth: float) -> None:
         self.name = name
         self.height = height
         self.age_days = age_days
@@ -14,7 +15,11 @@ class Plant:
         self.age_days += 1
 
     def show(self) -> None:
-        print(f"{self.name}: {round(self.height, 1)}cm, {self.age_days} days old")
+        print(
+            f"{self.name}: {round(self.height, 1)}cm, "
+            f"{self.age_days} days old"
+        )
+
 
 def ft_plant_growth() -> None:
     plant = Plant("Rose", 25.0, 30, 0.8)
@@ -27,7 +32,8 @@ def ft_plant_growth() -> None:
         plant.age()
         plant.show()
     total_growth = round(plant.height - initial_height, 1)
-    print(f"Growth this week: {total_growth}")
+    print(f"Growth this week: {total_growth}cm")
+
 
 if __name__ == "__main__":
     ft_plant_growth()

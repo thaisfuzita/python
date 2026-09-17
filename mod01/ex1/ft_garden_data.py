@@ -9,6 +9,7 @@ class Plant:
     def show(self) -> None:
         print(f"{self.name}: {self.height}cm, {self.age} days old")
 
+
 def ft_garden_data() -> None:
     plant1 = Plant("Rose", 25, 30)
     plant2 = Plant("Sunflower", 80, 45)
@@ -17,6 +18,7 @@ def ft_garden_data() -> None:
     print("=== Garden Plant Registry ===")
     for plant in garden:
         plant.show()
+
 
 if __name__ == "__main__":
     ft_garden_data()

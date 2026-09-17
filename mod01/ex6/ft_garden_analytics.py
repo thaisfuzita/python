@@ -17,10 +17,12 @@ class Plant:
             self._show_calls += 1
 
         def display(self) -> None:
-            print(f"Status: {self._grow_calls} grow, "
-                f"{self._age_calls} age, {self._show_calls} show")
+            print(
+                f"Status: {self._grow_calls} grow, "
+                f"{self._age_calls} age, {self._show_calls} show"
+            )
 
-    def __init__(self, name: str, height: int, age: int) -> None:
+    def __init__(self, name: str, height: int | float, age: int) -> None:
         self.name = name
         self.height = height
         self.age = age
@@ -36,7 +38,10 @@ class Plant:
 
     def show(self) -> None:
         self._stats.record_show()
-        print(f"{self.name.capitalize()}: {self.height}cm, {self.age} days old")
+        print(
+            f"{self.name.capitalize()}: "
+            f"{self.height}cm, {self.age} days old"
+        )
 
     def show_stats(self) -> None:
         self._stats.display()
@@ -48,6 +53,7 @@ class Plant:
     @classmethod
     def create_anonymous(cls):
         return cls("Unknown plant", 0.0, 0)
+
 
 class Flower(Plant):
     def __init__(self, name: str, height: float, age: int,
@@ -69,15 +75,16 @@ class Flower(Plant):
         else:
             print(f" {self.name.capitalize()} has not bloomed yet")
 
+
 class Seed(Flower):
     def __init__(self, name: str, height: float, age: int,
                  color: str) -> None:
         super().__init__(name, height, age, color)
         self.seeds = 0
 
-    def bloom(self) -> None:
+    def bloom(self, verbose: bool = True) -> None:
         print(f"[make {self.name} grow, age and bloom]")
-        super().bloom(verbose = False)
+        super().bloom(verbose=False)
         self.age_up(20)
         self.grow(30)
         self.seeds = 42
@@ -85,6 +92,7 @@ class Seed(Flower):
     def show(self) -> None:
         super().show()
         print(f" Seeds: {self.seeds}")
+
 
 class Tree(Plant):
     class _Stats(Plant._Stats):
@@ -98,25 +106,31 @@ class Tree(Plant):
         def display(self) -> None:
             super().display()
             print(f" {self._shade_calls} shade")
-        
+
     def __init__(self, name: str, height: float, age: int,
                  trunk_diameter: float) -> None:
         super().__init__(name, height, age)
         self.trunk_diameter = trunk_diameter
+        self._stats: Tree._Stats = self._Stats()
 
     def produce_shade(self) -> None:
         self._stats.record_shade()
         print(f"[asking the {self.name} to produce shade]")
-        print(f"The {self.name.capitalize()} now produces a shade of {self.height:.1f}cm long "
-              f"and {self.trunk_diameter:.1f}cm wide")
+        print(
+            f"The {self.name.capitalize()} now produces a shade of "
+            f"{self.height:.1f}cm long "
+            f"and {self.trunk_diameter:.1f}cm wide"
+        )
 
     def show(self) -> None:
         super().show()
         print(f" Trunk diameter: {self.trunk_diameter:.1f}cm")
 
+
 def display_stats(plant: Plant) -> None:
     print(f"[statistics for {plant.name.capitalize()}]")
     plant.show_stats()
+
 
 def ft_garden_analytics() -> None:
     print("=== Garden statistics ===")
@@ -155,6 +169,7 @@ def ft_garden_analytics() -> None:
     anon = Plant.create_anonymous()
     anon.show()
     display_stats(anon)
+
 
 if __name__ == "__main__":
     ft_garden_analytics()

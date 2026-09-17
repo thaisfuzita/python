@@ -35,6 +35,7 @@ class Plant:
     def show(self) -> None:
         print(f"{self.name}: {self._height:.1f}cm, {self._age} days old")
 
+
 def ft_garden_security() -> None:
     print("=== Garden Security System ===")
     plant = Plant("Rose", 15.0, 10)
@@ -49,6 +50,7 @@ def ft_garden_security() -> None:
     print()
     print("Current state: ", end="")
     plant.show()
+
 
 if __name__ == "__main__":
     ft_garden_security()
