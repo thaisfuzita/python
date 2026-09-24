@@ -5,9 +5,9 @@ from abc import ABC, abstractmethod
 
 
 class DataProcessor(ABC):
-    def __init__(self):
+    def __init__(self) -> None:
         self.number = 0
-        self.storage = []
+        self.storage: list[tuple[int, str]] = []
         self.name = ""
 
     @abstractmethod
@@ -24,7 +24,7 @@ class DataProcessor(ABC):
 
 
 class NumericProcessor(DataProcessor):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.name = "Numeric Processor"
 
@@ -54,7 +54,7 @@ class NumericProcessor(DataProcessor):
 
 
 class TextProcessor(DataProcessor):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.name = "Text Processor"
 
@@ -78,7 +78,7 @@ class TextProcessor(DataProcessor):
 
 
 class LogProcessor(DataProcessor):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.name = "Log Processor"
 

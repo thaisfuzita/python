@@ -3,7 +3,7 @@
 import sys
 
 
-def get_items(args: list[str]) -> dict:
+def get_items(args: list[str]) -> dict[str, int]:
     items = {}
     for arg in args:
         key_value = arg.split(":")
@@ -36,16 +36,17 @@ def ft_inventory_system() -> None:
     print(f"Item list: {list(items.keys())}")
     total = sum(items.values())
     print(f"Total quantity of the {len(items)}: {total}")
-    value_max = None
-    value_min = None
+    first = list(items)[0]
+    value_max = first
+    value_min = first
     for item in items:
         print(
             f"Item {item} represents "
             f"{round((items[item] / total) * 100, 1)}%"
         )
-        if value_max is None or items[item] > items[value_max]:
+        if items[item] > items[value_max]:
             value_max = item
-        if value_min is None or items[item] < items[value_min]:
+        if items[item] < items[value_min]:
             value_min = item
     print(f"Item most abundant: {value_max} with quantity {items[value_max]}")
     print(f"Item least abundant: {value_min} with quantity {items[value_min]}")

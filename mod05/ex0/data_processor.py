@@ -7,7 +7,7 @@ from abc import ABC, abstractmethod
 class DataProcessor(ABC):
     def __init__(self) -> None:
         self.number = 0
-        self.storage = []
+        self.storage: list[tuple[int, str]] = []
 
     @abstractmethod
     def validate(self, data: Any) -> bool:
@@ -110,7 +110,7 @@ def main() -> None:
     print(f" Trying to validate input 'Hello': {np.validate('Hello')}")
     print(" Test invalid ingestion of string 'foo' without prior validation:")
     try:
-        np.ingest("foo")
+        np.ingest("foo")  # type: ignore
     except ValueError as e:
         print(f" Got exception: {e}")
     data1: list[int | float] = [1, 2, 3, 4, 5]
@@ -137,7 +137,7 @@ def main() -> None:
     print("Testing Log Processor...")
     lp = LogProcessor()
     print(f" Trying to validate input 'Hello': {lp.validate('Hello')}")
-    data3: list[dict] = [
+    data3: list[dict[str, str]] = [
         {'log_level': 'NOTICE', 'log_message': 'Connection to server'},
         {'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'}
     ]
