@@ -44,10 +44,8 @@ def instructions() -> None:
         "Poetry: manages the venv for you, locks exact versions"
     )
 
-    
 
-
-def generate_matrix_data() -> "pd.DataFrame":
+def generate_matrix_data() -> "pd.DataFrame":  # type: ignore[name-defined]  # noqa: F821
     import numpy as np
     import pandas as pd
     rng = np.random.default_rng()
@@ -56,7 +54,7 @@ def generate_matrix_data() -> "pd.DataFrame":
     return df
 
 
-def plot(df: "pd.DataFrame") -> str:
+def plot(df: "pd.DataFrame") -> str:  # type: ignore[name-defined]  # noqa: F821
     import matplotlib.pyplot as plt
 
     filename = "matrix_analysis.png"
