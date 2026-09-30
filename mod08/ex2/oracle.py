@@ -23,7 +23,7 @@ def load_config() -> dict[str, str | None]:
     return configs
 
 
-def check_config(config: dict) -> dict[str, str]:
+def check_config(config: dict[str, str | None]) -> dict[str, str | None]:
     missing: list[str] = []
     defaults = {
         "MATRIX_MODE": "development",
@@ -51,7 +51,7 @@ def check_config(config: dict) -> dict[str, str]:
     return config
 
 
-def show_config(config: dict) -> None:
+def show_config(config: dict[str, str | None]) -> None:
     print("Configuration loaded:")
     print(f"Mode: {config['MATRIX_MODE']}")
     if config["MATRIX_MODE"] == "production":
