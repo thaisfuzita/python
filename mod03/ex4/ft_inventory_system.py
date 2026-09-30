@@ -17,11 +17,16 @@ def get_items(args: list[str]) -> dict[str, int]:
             continue
 
         try:
-            items[key] = int(value)
+            quantity = int(value)
         except ValueError as e:
             print(f"Quantity error for '{key}': {e}")
             continue
 
+        if quantity <= 0:
+            print(f"Quantity error for '{key}': quantity must be positive")
+            continue
+        
+        items[key] = int(value)
     return items
 
 

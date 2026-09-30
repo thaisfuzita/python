@@ -24,7 +24,7 @@ def consume_event(events: list[tuple[str, str]]
 def ft_data_stream() -> None:
     print("=== Game Data Stream Processor ===")
     gen1 = gen_event()
-    for i in range(1, 1000):
+    for i in range(1000):
         (player, action) = next(gen1)
         print(f"Event {i}: Player {player} did action {action}")
 
