@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
-from pydantic import BaseModel, Field, PastDatetime, ValidationError, model_validator
+from pydantic import (BaseModel, Field, PastDatetime,
+                      ValidationError, model_validator)
 from enum import Enum
 from datetime import datetime
+
 
 class ContactType(str, Enum):
     RADIO = "radio"
@@ -24,13 +26,18 @@ class AlienContact(BaseModel):
 
     @model_validator(mode="after")
     def check_rules(self) -> "AlienContact":
-        if self.contact_id[:2] != "AC":
+        if (self.contact_id[:2] != "AC"):
             raise ValueError('Contact ID must start with "AC" (Alien Contact)')
-        if self.contact_type == ContactType.PHYSICAL and not self.is_verified:
+        if (self.contact_type == ContactType.PHYSICAL
+                and not self.is_verified):
             raise ValueError('Physical contact reports must be verified')
-        if self.contact_type == ContactType.TELEPATHIC and self.witness_count < 3:
-            raise ValueError('Telepathic contact requires at least 3 witnesses')
-        if self.signal_strength > 7 and self.message_received is None:
+        if (self.contact_type == ContactType.TELEPATHIC
+                and self.witness_count < 3):
+            raise ValueError(
+                'Telepathic contact requires at least 3 witnesses'
+                )
+        if (self.signal_strength > 7
+                and self.message_received is None):
             raise ValueError('Strong signals should include received messages')
         return self
 
@@ -57,10 +64,10 @@ def main() -> None:
             contact_id="AC_2024_001",
             timestamp=datetime(2024, 7, 4, 22, 30),
             location="Area 52, Nevada",
-            contact_type="radio",
-            signal_strength="8.5",
-            duration_minutes="45",
-            witness_count="5",
+            contact_type=ContactType.RADIO,
+            signal_strength=8.5,
+            duration_minutes=45,
+            witness_count=5,
             message_received="Greetings from Zeta Reticuli",
         )
         print_contact(valid_contact)
@@ -76,10 +83,10 @@ def main() -> None:
             contact_id="AC_2024_002",
             timestamp=datetime(2024, 7, 4, 22, 30),
             location="Area 52, Nevada",
-            contact_type="telepathic",
-            signal_strength="8.5",
-            duration_minutes="45",
-            witness_count="1",
+            contact_type=ContactType.TELEPATHIC,
+            signal_strength=8.5,
+            duration_minutes=45,
+            witness_count=1,
             message_received=None,
         )
         print_contact(invalid_contact)
