@@ -2,8 +2,8 @@
 
 from pydantic import (BaseModel, Field, PastDatetime,
                       ValidationError, model_validator)
-from enum import Enum
 from datetime import datetime
+from enum import Enum
 
 
 class ContactType(str, Enum):
@@ -24,7 +24,7 @@ class AlienContact(BaseModel):
     message_received: str | None = Field(default=None, max_length=500)
     is_verified: bool = Field(default=False)
 
-    @model_validator(mode="after")
+    @model_validator(mode='after')
     def check_rules(self) -> "AlienContact":
         if (self.contact_id[:2] != "AC"):
             raise ValueError('Contact ID must start with "AC" (Alien Contact)')
