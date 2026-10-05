@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from elements import create_fire, create_water
 from .elements import create_air, create_earth
 
@@ -9,6 +7,7 @@ def healing_potion() -> str:
         f"Healing potion brewed with "
         f"'{create_earth()}' and '{create_air()}'"
     )
+
 
 def strength_potion() -> str:
     return (

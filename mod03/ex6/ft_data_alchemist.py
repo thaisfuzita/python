@@ -24,8 +24,8 @@ def ft_data_alchemist() -> None:
     print(f"New list of capitalized names only: {initial_c}\n")
 
     print(f"Score dict: {score_dict}")
-    average_score = round((sum(score_dict.values()) / len(score_dict)), 2)
-    print(f"Score average is {average_score}")
+    average_score = sum(score_dict.values()) / len(score_dict)
+    print(f"Score average is {round(average_score, 2)}")
     high_scores = {
         name: score for name, score in score_dict.items()
         if score > average_score

@@ -1,3 +1,6 @@
-#!/usr/bin/env python3
+from .light_spellbook import (
+    light_spell_allowed_ingredients,
+    light_spell_record,
+)
 
-from . import light_spellbook
+__all__ = ["light_spell_allowed_ingredients", "light_spell_record"]

@@ -15,9 +15,7 @@ def read_data(filename: str) -> list[str] | None:
         print(f"{data}")
         print("\n---")
     except OSError as e:
-        sys.stdout.flush()
         sys.stderr.write(f"[STDERR] Error opening file '{filename}': {e}\n")
-        sys.stderr.flush()
         return None
     finally:
         if file is not None:
@@ -45,9 +43,7 @@ def save_file(filename: str, data: list[str]) -> None:
         for line in data:
             file.write(line + "\n")
     except OSError as e:
-        sys.stdout.flush()
         sys.stderr.write(f"[STDERR] Error opening file '{filename}': {e}\n")
-        sys.stderr.flush()
         return
     finally:
         if file is not None:
